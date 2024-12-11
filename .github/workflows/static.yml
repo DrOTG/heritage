@@ -35,6 +35,8 @@ jobs:
         uses: actions/setup-node@v4.1.0
         with:
           node-version: v20.11.0
+      - name: Install project dependancies
+        run: npm install
       - name: Build project
         run: npm run build
       - name: Setup Pages

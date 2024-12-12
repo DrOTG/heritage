@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@react-oauth/google": "^0.12.1",
+    "jose": "^5.9.6",
+    "jwt-decode": "^4.0.0",
     "primeicons": "^7.0.0",
     "primereact": "^10.8.5",
     "react": "^18.3.1",

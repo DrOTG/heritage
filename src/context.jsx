@@ -3,7 +3,9 @@ import { createContext, useEffect, useReducer } from "react"
 import { useNavigate } from "react-router-dom";
 
 const initialData = {
-  user:null
+  user:null,
+  userInit:true,
+  userError:null,
 }
 
 function userReducer(state,action) {
@@ -22,8 +24,12 @@ function userReducer(state,action) {
           picture:payload.picture
         }
         state.user = user
+        state.userError = null
+        state.userInit = false
         return state
       } else {
+        state.userInit = false
+        state.userError = "Token expired!"
         return state
       }
   
@@ -46,7 +52,6 @@ export function UserProvider({children}) {
         payload:credentials
       })
     }
-    console.log(credentials)
   },[])
 
   return (

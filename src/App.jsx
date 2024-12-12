@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Menubar } from 'primereact/menubar'
 import logo from './assets/logo.png'
 import { GoogleLogin } from '@react-oauth/google';
@@ -15,32 +15,23 @@ function App() {
   function goToProfile(e) {
     if(userData.user === null) {
       navigate("/login")
+    } else {
+      navigate("/profile")
     }
   }
-  
+
   return (
     <>
     <Menubar start={(
       <div style={{display:"flex",alignItems:"center",fontSize:"24px",fontWeight:"bolder",color:"var(--primary-color)"}}>
-        <img src={logo} height={50} />
+        <img src={logo} height={50} onClick={()=>{navigate("/")}} style={{cursor:"pointer"}} />
       </div>
     )} end={(
       <Button style={{background:"none"}} onClick={goToProfile}>
-        <Avatar icon='pi pi-user' shape='circle' />
+        {userData.user ? <Avatar image={userData.user.picture} shape='circle' /> : <Avatar icon='pi pi-user' shape='circle' /> }
       </Button>
     )} />
-    <div style={{padding:"0 16px"}}>
-      {/* <GoogleLogin
-        theme='filled_black'
-        shape='circle'
-        onSuccess={(credentialResponse)=>{
-          console.log(credentialResponse)
-          const decoded = jwtDecode(credentialResponse.credential)
-          console.log(decoded)
-        }}
-        onError={()=>{
-          console.log("failed")
-        }}/> */}
+    <div style={{padding:"16px"}}>
         <Outlet />
     </div>
     </>

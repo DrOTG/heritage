@@ -9,6 +9,7 @@ import { createHashRouter, RouterProvider } from 'react-router-dom'
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import Login from './pages/Login.jsx'
 import { UserProvider } from './context.jsx'
+import Profile from './pages/Profile.jsx'
 
 const router = createHashRouter([
   {
@@ -18,6 +19,10 @@ const router = createHashRouter([
       {
         path:"login",
         element: <Login />
+      },
+      {
+        path:"profile",
+        element:<Profile />
       }
     ]
   }

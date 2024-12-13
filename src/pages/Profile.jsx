@@ -15,17 +15,19 @@ export default function Profile() {
   }
 
   return (
-    <Card
-      style={{maxWidth:"500px",margin:"auto"}}
-      title={userData.user.firstName+" "+userData.user.lastName}
-      subTitle={userData.user.email}
-      header={(
-        <img src={userData.user.picture} />
-      )}
-      footer={(
-        <div style={{display:"flex",justifyContent:"end",gap:"8px"}}>
-          <Button label="Logout" severity="danger" onClick={(e)=>{logout()}} />
-        </div>
-      )}></Card>
+    <div>
+      <Card
+        style={{maxWidth:"500px",margin:"auto"}}
+        title={userData.user.firstName+" "+userData.user.lastName}
+        subTitle={userData.user.email}
+        header={(
+          <img src={userData.user.picture} />
+        )}
+        footer={(
+          <div style={{display:"flex",justifyContent:"end",gap:"8px"}}>
+            <Button label="Logout" severity="danger" onClick={(e)=>{logout()}} />
+          </div>
+        )}></Card>
+    </div>
   )
 }

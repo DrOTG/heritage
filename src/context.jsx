@@ -1,6 +1,7 @@
 import { jwtDecode } from "jwt-decode";
 import { ProgressSpinner } from "primereact/progressspinner";
-import { createContext, useEffect, useReducer } from "react"
+import { Toast } from "primereact/toast";
+import { createContext, useEffect, useReducer, useRef } from "react"
 import { useNavigate } from "react-router-dom";
 
 const initialData = {
@@ -41,9 +42,11 @@ function userReducer(state,action) {
 
 export const UserContext = createContext(initialData)
 export const DispatchUserData = createContext(null)
+export const ToastContext = createContext(null)
 
 export function UserProvider({children}) {
   const [userData,dispatch] = useReducer(userReducer,initialData)
+  const toastRef = useRef(null)
 
   useEffect(()=>{
     const credentials = localStorage.getItem("credentials")
@@ -58,13 +61,16 @@ export function UserProvider({children}) {
   return (
     <UserContext.Provider value={userData}>
       <DispatchUserData.Provider value={dispatch}>
-        {!userData.userInit ? (
-          <center>
-            <ProgressSpinner />
-          </center>
-        ) : (
-          <>{children}</>
-        ) }
+        <ToastContext.Provider value={toastRef}>
+          {!userData.userInit ? (
+            <center>
+              <ProgressSpinner />
+            </center>
+          ) : (
+            <>{children}</>
+          ) }
+        </ToastContext.Provider>
+        <Toast ref={toastRef} />
       </DispatchUserData.Provider>
     </UserContext.Provider>
   )

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState, useRef } from 'react'
 import { Menubar } from 'primereact/menubar'
 import logo from './assets/logo.png'
 import { GoogleLogin } from '@react-oauth/google';
@@ -6,15 +6,20 @@ import { jwtDecode } from 'jwt-decode';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Avatar } from 'primereact/avatar';
 import { Button } from 'primereact/button';
-import { UserContext } from './context';
+import { ToastContext, UserContext } from './context';
+import { Toast } from 'primereact/toast';
 
 function App() {
   const userData = useContext(UserContext)
   const navigate = useNavigate()
+  const toastRef = useContext(ToastContext)
 
   function goToProfile(e) {
     if(userData.user === null) {
       navigate("/login")
+      if(userData.userError) {
+        toastRef.current.show({severity:"error",summary:"User Error",detail:userData.userError})
+      }
     } else {
       navigate("/profile")
     }
@@ -32,7 +37,7 @@ function App() {
       </Button>
     )} />
     <div style={{padding:"16px"}}>
-        <Outlet />
+      <Outlet />
     </div>
     </>
   )

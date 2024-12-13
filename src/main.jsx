@@ -11,6 +11,7 @@ import Login from './pages/Login.jsx'
 import { UserProvider } from './context.jsx'
 import Profile from './pages/Profile.jsx'
 import Home from './pages/Home.jsx'
+import RequireLogin from './components/RequireLogin.jsx'
 
 const router = createHashRouter([
   {
@@ -27,7 +28,7 @@ const router = createHashRouter([
       },
       {
         path:"profile",
-        element:<Profile />
+        element:<RequireLogin><Profile /></RequireLogin>
       }
     ]
   }

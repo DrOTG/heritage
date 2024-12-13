@@ -1,19 +1,18 @@
 import { GoogleLogin } from "@react-oauth/google";
 import { Card } from "primereact/card";
 import { useContext, useEffect, useRef } from "react";
-import { DispatchUserData, UserContext } from "../context";
-import { Toast } from "primereact/toast";
+import { DispatchUserData, ToastContext, UserContext } from "../context";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const userDispatch = useContext(DispatchUserData)
   const userData = useContext(UserContext)
-  const toastRef = useRef(null)
+  const toastRef = useContext(ToastContext)
   const navigate = useNavigate()
 
   useEffect(()=>{
     if(userData.user !== null) {
-      navigate("/")
+      navigate("/profile")
     }
   })
 
@@ -31,17 +30,14 @@ export default function Login() {
                   type:"credentials",
                   payload:credentialResponse.credential
                 })
-                console.log(credentialResponse) // TODO: remove this
               }}
               onError={()=>{
-                toastRef.current.show({})
-                console.log("failed")
+                toastRef.current.show({severity:"error",summary:"Login Error",detail:"Login with google failed."})
               }}
             />
           </center>
         </div>
       )}></Card>
-      <Toast ref={toastRef} />
     </div>
   )
 }

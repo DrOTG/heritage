@@ -34,6 +34,16 @@ function userReducer(state,action) {
         state.userError = "Token expired!"
         return state
       }
+    
+    case "init":
+      console.log("init")
+      state.userInit = false
+      state.userError = null
+      return state
+    
+    case "logout":
+      console.log("logout")
+      return initialData
   
     default:
       return state
@@ -54,6 +64,10 @@ export function UserProvider({children}) {
       dispatch({
         type:"credentials",
         payload:credentials
+      })
+    } else {
+      dispatch({
+        type:"init"
       })
     }
   },[])

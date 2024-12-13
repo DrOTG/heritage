@@ -10,12 +10,17 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import Login from './pages/Login.jsx'
 import { UserProvider } from './context.jsx'
 import Profile from './pages/Profile.jsx'
+import Home from './pages/Home.jsx'
 
 const router = createHashRouter([
   {
     path: "/",
     element: <App />,
     children: [
+      {
+        path:"",
+        element:<Home />
+      },
       {
         path:"login",
         element: <Login />
@@ -31,11 +36,11 @@ const router = createHashRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <PrimeReactProvider>
-      <UserProvider>
-        <GoogleOAuthProvider clientId='1053050806046-t1ne3ogj3jf5qupfk9heaahia06mih75.apps.googleusercontent.com'>
+      <GoogleOAuthProvider clientId='1053050806046-t1ne3ogj3jf5qupfk9heaahia06mih75.apps.googleusercontent.com'>
+        <UserProvider>
           <RouterProvider router={router}/>
-        </GoogleOAuthProvider>
-      </UserProvider>
+        </UserProvider>
+      </GoogleOAuthProvider>
     </PrimeReactProvider>
   </React.StrictMode>,
 )

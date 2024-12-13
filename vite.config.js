@@ -14,8 +14,8 @@ export default defineConfig({
     },
 
     manifest: {
-      name: 'paidaccess',
-      short_name: 'paidaccess',
+      name: 'Heritage',
+      short_name: 'heritage',
       description: 'Pay for access to google drive link',
       theme_color: '#ffffff',
     },

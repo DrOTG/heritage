@@ -1,4 +1,5 @@
 import { jwtDecode } from "jwt-decode";
+import { ProgressSpinner } from "primereact/progressspinner";
 import { createContext, useEffect, useReducer } from "react"
 import { useNavigate } from "react-router-dom";
 
@@ -57,7 +58,13 @@ export function UserProvider({children}) {
   return (
     <UserContext.Provider value={userData}>
       <DispatchUserData.Provider value={dispatch}>
-        {children}
+        {!userData.userInit ? (
+          <center>
+            <ProgressSpinner />
+          </center>
+        ) : (
+          <>{children}</>
+        ) }
       </DispatchUserData.Provider>
     </UserContext.Provider>
   )

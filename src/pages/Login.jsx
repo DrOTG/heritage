@@ -2,17 +2,19 @@ import { GoogleLogin } from "@react-oauth/google";
 import { Card } from "primereact/card";
 import { useContext, useEffect, useRef } from "react";
 import { DispatchUserData, ToastContext, UserContext } from "../context";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export default function Login() {
   const userDispatch = useContext(DispatchUserData)
   const userData = useContext(UserContext)
   const toastRef = useContext(ToastContext)
   const navigate = useNavigate()
+  const [searchParams,setSearchParams] = useSearchParams()
 
   useEffect(()=>{
     if(userData.user !== null) {
-      navigate("/profile")
+      let next = searchParams.get("next") ?? "/profile"
+      navigate(next)
     }
   })
 

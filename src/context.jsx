@@ -12,7 +12,7 @@ const initialData = {
 
 function userReducer(state,action) {
   switch (action.type) {
-    case "credentials":
+    case "credentials": {
       const payload = jwtDecode(action.payload)
       var today = new Date()
       var tokenDate = new Date(payload.exp*1000)
@@ -25,25 +25,36 @@ function userReducer(state,action) {
           lastName:payload.family_name,
           picture:payload.picture
         }
-        state.user = user
-        state.userError = null
-        state.userInit = false
-        return state
+        return {
+          ...state,
+          user:user,
+          userError:null,
+          userInit:false
+        }
       } else {
-        state.userInit = false
-        state.userError = "Token expired!"
-        return state
+        return {
+          ...state,
+          userInit:false,
+          userError:"Token expired!"
+        }
       }
+    }
     
     case "init":
-      console.log("init")
-      state.userInit = false
-      state.userError = null
-      return state
+      return {
+        ...state,
+        userInit:false,
+        userError:null
+      }
     
     case "logout":
       console.log("logout")
-      return initialData
+      return {
+        ...state,
+        user:null,
+        userError:null,
+        userInit:false
+      }
   
     default:
       return state
@@ -76,7 +87,7 @@ export function UserProvider({children}) {
     <UserContext.Provider value={userData}>
       <DispatchUserData.Provider value={dispatch}>
         <ToastContext.Provider value={toastRef}>
-          {!userData.userInit ? (
+          {userData.userInit ? (
             <center>
               <ProgressSpinner />
             </center>

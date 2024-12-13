@@ -8,7 +8,6 @@ export default function RequireLogin({children}) {
   const location = useLocation()
 
   useEffect(()=>{
-    console.log(userData)
     if(userData.user === null && userData.userInit === false) {
       navigate(`/login?next=${location.pathname}`)
     }

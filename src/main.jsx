@@ -13,6 +13,7 @@ import { UserProvider } from './context.jsx'
 import Profile from './pages/Profile.jsx'
 import Home from './pages/Home.jsx'
 import RequireLogin from './components/RequireLogin.jsx'
+import Subscribe from './pages/Subscribe.jsx'
 
 const router = createHashRouter([
   {
@@ -22,6 +23,10 @@ const router = createHashRouter([
       {
         path:"",
         element:<Home />
+      },
+      {
+        path:"subscribe/:id",
+        element:<RequireLogin><Subscribe /></RequireLogin>
       },
       {
         path:"login",

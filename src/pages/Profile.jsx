@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { DispatchUserData, UserContext } from "../context";
 import {Button} from 'primereact/button'
 import PaymentMethods from "../components/PaymentMethods";
+import Subscriptions from "../components/Subscriptions";
 
 export default function Profile() {
   const userData = useContext(UserContext)
@@ -33,7 +34,7 @@ export default function Profile() {
       <div className="col-12 md:col-8">
         <div className="flex flex-column gap-2">
           <PaymentMethods />
-          <Card></Card>
+          <Subscriptions />
         </div>
       </div>
     </div>

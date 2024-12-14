@@ -4,6 +4,7 @@ import App from './App.jsx'
 import './index.css'
 import "primereact/resources/themes/lara-dark-purple/theme.css"
 import 'primeicons/primeicons.css'
+import 'primeflex/primeflex.css'
 import { PrimeReactProvider } from 'primereact/api'
 import { createHashRouter, RouterProvider } from 'react-router-dom'
 import { GoogleOAuthProvider } from '@react-oauth/google';

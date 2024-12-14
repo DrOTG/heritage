@@ -4,5 +4,11 @@
       "name":"Dr OTG's Folder",
       "school":"LMMU"
     }
+  ],
+  "paymentMethods":[
+    {
+      "name":"Airtel Money",
+      "id":"airtelMoney"
+    }
   ]
 }

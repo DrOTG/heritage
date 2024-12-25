@@ -1,10 +1,8 @@
-import { DataView } from 'primereact/dataview'
-import DriveFolders from '../components/DriveFolders';
-
+import React from 'react';
 export default function Home() {
   return (
     <div>
-      <DriveFolders />
+      
     </div>
   )
 }

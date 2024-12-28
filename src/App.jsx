@@ -7,9 +7,20 @@ import { Button } from 'primereact/button';
 import { ToastContext, UserContext } from './context';
 import { Toast } from 'primereact/toast';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+
+// assets
 import logoWhite from './assets/logo.png'; // Default white logo
 import logoBlack from './assets/logo_2.png'; // Black logo
-import './index.css'; // Use the existing CSS file
+
+// Sections of Home page
+import Hero from "./components/sections/Hero";
+import About from "./components/sections/About";
+import Supported_uni from "./components/sections/Supported_uni";
+import Contact from "./components/sections/Contact";
+import Footer from "./components/sections/Footer";
+
+// Main CSS file
+import './index.css'; 
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,7 +43,7 @@ function App() {
   }
   useEffect(() => {
     const handleScroll = () => {
-      if (location.pathname === '/' && window.scrollY > 50) {
+      if (location.pathname === '/' && window.scrollY > 690) {
         setIsScrolled(true);
         setLogo(logoBlack);
       } else if (location.pathname === '/') {
@@ -99,31 +110,39 @@ function App() {
 
   return (
     <>
-      <Menubar
-        model={menuItems}
-        start={<img src={logo} alt="Logo" className="navbar-logo" onClick={() => navigate('/')} />}
-        className={`custom-menubar ${isScrolled ? 'scrolled' : ''}`}
-        end={<button className={`pi pi-user`} style={{ fontSize: '1.5rem', cursor: 'pointer' }} onClick={goToProfile}></button>}
-      />
-      <div className="main-content">
-        {location.pathname === '/' && (
-          <>
-            <section id="home" style={{ padding: '100px 20px' }}>
-              <h1>Home Section</h1>
-              <p>Welcome to our website!</p>
-            </section>
-            <section id="about" style={{ padding: '100px 20px' }}>
-              <h1>About Us Section</h1>
-              <p>Learn more about us here!</p>
-            </section>
-            <section id="contact" style={{ padding: '100px 20px' }}>
-              <h1>Contact Us Section</h1>
-              <p>Get in touch with us!</p>
-            </section>
-          </>
-        )}
-        <Outlet />
-      </div>
+      <div className="main-content"></div>
+        <div className='css-ywysxn'>
+          <div className='css-nq39mh'>
+            <div className='css-zf0iqh'>
+                <Menubar
+                  model={menuItems}
+                  start={<img src={logo} alt="Logo" className="navbar-logo" onClick={() => navigate('/')} />}
+                  className={`custom-menubar ${isScrolled ? 'scrolled' : ''}`}
+                  end={<button className={`pi pi-user`} style={{ fontSize: '1.5rem', cursor: 'pointer' }} onClick={goToProfile}></button>}
+                />
+                <div className="main-content">
+                  {location.pathname === '/' && (
+                    <>
+                      <div className='css-1xzeski'>
+                        <div className='main css-1ylu0bo'>
+                          <div className='css-klr5dl'>
+                            <Hero />
+                            <About />
+                            <Supported_uni />
+                            <Contact />
+                          </div>
+                        </div>
+                        <div className='css-1xzeski'>
+                          <Footer />
+                        </div>
+                      </div>
+                    </>
+                  )}
+                  <Outlet />
+            </div>
+          </div>
+          </div>
+        </div>
     </>
   );
 }

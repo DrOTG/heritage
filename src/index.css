@@ -1,6 +1,6 @@
 /* Default transparent menu bar */
 .custom-menubar {
-  background: transparent;
+  background: black;
   box-shadow: none;
   transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
   position: fixed;
@@ -48,8 +48,67 @@ color: black;
   height: 50px;
   transition: filter 0.3s ease; /* Smooth transition for logo switch */
 }
-
-/* main content */
-.main-content {
-  padding-top: 60px; /* Matches the height of the Menubar */
+.main-content{
+  --breakpoint: "xs";
+    --grid-gutter: 16px;
+    --grid-columns: 6;
+    --grid-margin: 20px;
+    --max-width: calc(1912px - 80px);
+    --container-width: auto;
+    --bg-design-grid: rgba(127, 255, 255, 0.25);
+}
+.css-ywysxn {
+  --breakpoint: "xs";
+  --grid-gutter: 16px;
+  --grid-columns: 6;
+  --grid-margin: 20px;
+  --max-width: calc(1912px - 80px);
+  --container-width: auto;
+  --bg-design-grid: rgba(127, 255, 255, 0.25);
+}
+@media screen and (min-width: 900px) {
+  .css-ywysxn {
+      --breakpoint: "lg";
+      --grid-columns: 12;
+      --grid-margin: 32px;
+  }
+}
+.css-nq39mh {
+  position: relative;
+  margin: 0 auto;
+  max-width: var(--max-width);
+  margin-left: var(--grid-margin);
+  margin-right: var(--grid-margin);
+}
+.css-zf0iqh {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.css-1xzeski{
+  color: #111111;
+  background-color: #ffffff;
+  border-color: #e5e5e5;
+}
+.css-1ylu0bo{
+  display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+}
+.css-klr5dl {
+  z-index: 0;
+  position: relative;
+  background-color: #111111;
 }

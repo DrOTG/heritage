@@ -1,0 +1,30 @@
+/* supported universities */
+.universities-section {
+    text-align: center; /* Center content */
+    background-color: black;
+    color: white;
+  }
+  
+  .universities-logos {
+    display: flex;
+    justify-content: center; /* Align logos horizontally */
+    gap: 30px; /* Add space between logos */
+    margin: 20px 0; /* Space above and below the logos */
+  }
+  
+  .supported-logo {
+    max-width: 130px; /* Limit the width of the logos */
+    max-height: 90px; /* Ensure logos are not too tall */
+    transition: transform 0.3s ease; /* Add hover effect */
+    cursor: pointer;
+  }
+  
+  .supported-logo:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+  }
+  
+  .coming-soon {
+    font-size: 14px;
+    margin-top: 10px; /* Space above 'More Universities Coming Soon' */
+  }
+  

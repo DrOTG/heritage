@@ -6,25 +6,25 @@ import './Supported_uni.css';
 
 const supported_uni = () => {
   return (            
-            <section id="supported-universities">
-                <div className="universities-section">
-                    <h2>Supported Universities</h2>
-                    <div className="universities-logos">
-                        <img
-                            src={logoLmmu}
-                            alt="LMMU"
-                            className="supported-logo"
-                            onClick={() => navigate('/')}
-                        />
-                        <img
-                            src={logoUnilus}
-                            alt="UNILUS"
-                            className="supported-logo"
-                            onClick={() => navigate('/')}
-                        />
+            <section id="supported-universities" className="clients">
+                <div className="container">
+                    <div className="row client-logos">
+                        <div className="client-logo">
+                            <img
+                                src={logoLmmu}
+                                alt="LMMU"
+                                onClick={() => navigate('/')}
+                            />
+                        </div>
+                        <div className="client-logo">
+                            <img
+                                src={logoUnilus}
+                                alt="UNILUS"
+                                onClick={() => navigate('/')}
+                            />
+                        </div>
                     </div>
-                    <p className="coming-soon">More Universities Coming Soon...</p>
-                </div>
+                </div>        
             </section>
  );
 };

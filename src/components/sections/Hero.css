@@ -11,17 +11,73 @@
     align-items: center;
     justify-content: center;
   }
-  .hero-text{
+
+  .hero {
+    position: relative;
+    height: 60vh; /* Increased height for more impact */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover entire area */
+    filter: brightness(0.6); /* Slightly darker overlay for better text readability */
+    transition: transform 0.5s ease-in-out; /* Smooth zoom transition */
+  }
+  
+  .hero:hover .hero-image {
+    transform: scale(1.05); /* Subtle zoom on hover */
+  }
+  
+  .hero-text-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
-    max-width: 800px;
+    color: #fff; /* White text */
+    z-index: 2; /* Text on top of image */
+    padding: 0 20px; /* Add padding for smaller screens */
+    max-width: 80%; /* Limit text width */
   }
-  .hero-text h1{
-    font-size: 60px;
-    font-weight: 600;
+  
+  .hero-text-wrapper h1 {
+    font-size: 2.5rem;
+    font-weight: 700; /* Bolder font-weight */
+    margin-bottom: 1rem;
+    letter-spacing: 0.05rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add text shadow */
   }
-  .hero-text p{
+  
+  .hero-text-wrapper p {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Add text shadow */
     max-width: 700px;
-    margin: 10px auto 20px;
-    line-height: 1.4;
+    margin: 0 auto;
   }
+  
+  /* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-text-wrapper h1 {
+      font-size: 2rem;
+  }
+  .hero-text-wrapper p {
+      font-size: 1rem;
+  }
+  .hero {
+      height: 40vh; /* Adjust hero height on smaller screens */
+  }
+}
+
+@media (max-width: 500px) {
+  .hero-text-wrapper h1 {
+      font-size: 1.7rem;
+  }
+}
+  
   

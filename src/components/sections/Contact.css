@@ -33,7 +33,34 @@
     margin: 0;
     line-height: 1.8;
   }
-  
+.left-col .social-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: left; /* links horizontally */
+}
+.left-col .social-links li {
+  margin: 0 15px; /* Adjust spacing */
+}
+.left-col .social-links li a {
+  color: #3d3c3c;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+  padding: 8px 12px; /* Add padding around link text */
+  border-radius: 5px; /* Rounded corners for links */
+  display: inline-block;
+}
+
+.left-col .social-links li a i {
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.left-col .social-links li a:hover i {
+  transform: scale(1.2); /* Scale icon on hover */
+}
   .right-col form {
     display: flex;
     flex-direction: column;

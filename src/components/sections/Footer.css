@@ -1,22 +1,73 @@
-/* footer */
+/* footer.css */
 .footer {
+    background-color: #111; /* Darker background */
+    color: #eee;
+    padding: 60px 0;
+    font-family: 'Arial', sans-serif; /* Modern font */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Add some padding on the sides */
+}
+
+.footer-content {
     display: flex;
-    justify-content: space-between; /* Add space between the items */
-    align-items: center;           /* Vertically align items */
-    padding-right: 10px;
-    padding-left: 10px;
-    padding-top: 0px;
-    padding-bottom: 0px;            /* Add padding for better spacing */
-    background-color: black;       /* Footer background */
-    color: white;                  /* Text color */
-  }
-  
-  .footer-logo {
-    max-height: 40px; /* Adjust logo size if needed */
-  }
-  
-  .footer-copyright {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center; /* Vertically align items */
+}
+
+.footer-section {
+    flex: 1 1 300px; /* Adjust as needed */
+    margin-bottom: 20px; /* Add margin between sections on smaller screens */
+    text-align: center; /* Center content within each section */
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.profile-links {
+    list-style: none;
+    padding: 0;
     margin: 0;
-    font-size: 14px; /* Adjust font size if needed */
-  }
-  
+    display: flex;
+    justify-content: center; /* Center links horizontally */
+}
+
+.profile-links li {
+    margin: 0 15px; /* Adjust spacing */
+}
+
+.profile-links li a{
+    color: #eee;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease, transform 0.2s ease;
+    padding: 8px 12px; /* Add padding around link text */
+    border-radius: 5px; /* Rounded corners for links */
+    display: inline-block;
+}
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* Stack sections vertically */
+        text-align: center;
+    }
+
+    .footer-section {
+        margin-bottom: 30px; /* Increase margin between sections */
+    }
+
+    .profile-links{
+        flex-direction: column; /* Stack links vertically */
+        align-items: center;
+    }
+
+    .profile-links li{
+        margin: 10px 0; /* Adjust vertical spacing */
+    }
+}

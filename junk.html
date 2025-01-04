@@ -1,0 +1,89 @@
+  <footer className="footer">
+          <img src={GlogoWhite} alt="Logo" className="footer-logo" />
+          <p className="footer-copyright">&copy; 2024 by Dr.OTG. All rights reserved.</p>
+      </footer>
+
+      /* footer */
+      .footer {
+          display: flex;
+          justify-content: space-between; /* Add space between the items */
+          align-items: center;           /* Vertically align items */
+          padding-right: 10px;
+          padding-left: 10px;
+          padding-top: 0px;
+          padding-bottom: 0px;            /* Add padding for better spacing */
+          background-color: black;       /* Footer background */
+          color: white;                  /* Text color */
+        }
+        
+        .footer-logo {
+          max-height: 40px; /* Adjust logo size if needed */
+        }
+        
+        .footer-copyright {
+          margin: 0;
+          font-size: 14px; /* Adjust font size if needed */
+        }
+  
+        
+
+
+
+        .custom-menubar .p-menubar .p-component .p-menuitem a:before {
+            position: relative; /* Required for positioning the underline */
+            font-weight: bold;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            text-decoration: none;
+            color: black !important; /* Override PrimeReact's color */
+          }
+          
+          /* Add underline effect on hover and active states */
+          .custom-menubar .p-menubar .p-component .p-menuitem a:before {
+            content: "";
+            position: absolute;
+            height: 2px;
+            bottom: -6px;
+            left: 0;
+            background-color: var(--nav-hover-color, #ff4a17);
+            visibility: hidden;
+            width: 0;
+            transition: all 0.3s ease-in-out;
+          }
+          
+          /* Make underline visible on hover and active states */
+          .custom-menubar .p-menubar .p-menuitem a.active:before {
+            visibility: visible;
+            width: 100%;
+          }
+          
+          .universities-section {
+            text-align: center; /* Center content */
+            background-color: black;
+            color: white;
+          }
+          
+          .universities-logos {
+            display: flex;
+            justify-content: center; /* Align logos horizontally */
+            gap: 30px; /* Add space between logos */
+            margin: 20px 0; /* Space above and below the logos */
+          }
+          
+          .supported-logo {
+            max-width: 130px; /* Limit the width of the logos */
+            max-height: 90px; /* Ensure logos are not too tall */
+            transition: transform 0.3s ease; /* Add hover effect */
+            cursor: pointer;
+          }
+          
+          .supported-logo:hover {
+            transform: scale(1.1); /* Slight zoom on hover */
+          }
+          
+          .coming-soon {
+            font-size: 14px;
+            margin-top: 10px; /* Space above 'More Universities Coming Soon' */
+          }
+                  
+      

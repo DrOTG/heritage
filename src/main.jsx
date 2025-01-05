@@ -15,6 +15,8 @@ import Login from './pages/Login.jsx';
 import Profile from './pages/Profile.jsx';
 import RequireLogin from './components/RequireLogin.jsx';
 import Subscribe from './pages/Subscribe.jsx';
+import AdminRoot from './pages/admin/AdminRoot.jsx';
+import AdminDashboard from './pages/admin/AdminDashboard.jsx';
 
 const router = createHashRouter([
   {
@@ -44,6 +46,16 @@ const router = createHashRouter([
       
     ],
   },
+  {
+    path:"/admin",
+    element: <AdminRoot />,
+    children: [
+      {
+        path:"",
+        element: <AdminDashboard />
+      }
+    ]
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

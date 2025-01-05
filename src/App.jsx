@@ -16,6 +16,7 @@ import Footer from './components/sections/Footer';
 
 // Main CSS file
 import './index.css';
+import { Avatar } from 'primereact/avatar';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -146,26 +147,16 @@ function App() {
                   </a>
                 ),
               }))}
+              end={(
+                <>
+                {userData.user && (
+                  <Avatar image={userData.user.photoUrl} />
+                )}
+                </>
+              )}
             />
 
             <div className="main-content">
-              {location.pathname === '/' && (
-                <>
-                  <div className="css-1xzeski">
-                    <div className="main css-1ylu0bo">
-                      <div className="css-klr5dl">
-                        <Hero />
-                        <About />
-                        <SupportedUni />
-                        <Contact />
-                      </div>
-                    </div>
-                    <div className="css-1xzeski">
-                      <Footer />
-                    </div>
-                  </div>
-                </>
-              )}
               <Outlet />
             </div>
           </div>

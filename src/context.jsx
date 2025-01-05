@@ -2,12 +2,14 @@ import { jwtDecode } from "jwt-decode";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { Toast } from "primereact/toast";
 import { createContext, useEffect, useReducer, useRef } from "react"
-import { useNavigate } from "react-router-dom";
+import { initializeApp } from "firebase/app";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const initialData = {
   user:null,
   userInit:true,
   userError:null,
+  firebaseApp:null,
 }
 
 function userReducer(state,action) {
@@ -39,6 +41,18 @@ function userReducer(state,action) {
         }
       }
     }
+
+    case "firebaseApp":
+      return {
+        ...state,
+        firebaseApp:action.payload
+      }
+    
+    case "user":
+      return {
+        ...state,
+        user:action.payload,
+      }
     
     case "init":
       return {
@@ -69,7 +83,46 @@ export function UserProvider({children}) {
   const [userData,dispatch] = useReducer(userReducer,initialData)
   const toastRef = useRef(null)
 
+  function initializeFirebaseApp() {
+    if(userData.firebaseApp === null) {
+      const firebaseConfig = {
+      
+        apiKey: "AIzaSyB6cauL4JBfeJ7aEhEjDPzUtUWZKdCpX1Q",
+      
+        authDomain: "exsae-technologies.firebaseapp.com",
+      
+        databaseURL: "https://exsae-technologies.firebaseio.com",
+      
+        projectId: "exsae-technologies",
+      
+        storageBucket: "exsae-technologies.firebasestorage.app",
+      
+        messagingSenderId: "1053050806046",
+      
+        appId: "1:1053050806046:web:41bd9d08bd419ab5a3330f"
+      
+      };
+      
+      const app = initializeApp(firebaseConfig);
+      dispatch({
+        type:"firebaseApp",
+        payload:app,
+      })
+
+      const auth = getAuth(app)
+      onAuthStateChanged(auth,(user) => {
+        if(user){
+          dispatch({
+            type:"user",
+            payload:user,
+          })
+        }
+      })
+    }
+  }
+
   useEffect(()=>{
+    initializeFirebaseApp()
     const credentials = localStorage.getItem("credentials")
     if (credentials) {
       dispatch({

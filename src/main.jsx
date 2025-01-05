@@ -49,11 +49,11 @@ const router = createHashRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <PrimeReactProvider>
-      <GoogleOAuthProvider clientId="1053050806046-t1ne3ogj3jf5qupfk9heaahia06mih75.apps.googleusercontent.com">
+      {/* <GoogleOAuthProvider clientId="568116722597-i8jbom46lr6j84cao5sc22miug17rijc.apps.googleusercontent.com"> */}
         <UserProvider>
           <RouterProvider router={router} />
         </UserProvider>
-      </GoogleOAuthProvider>
+      {/* </GoogleOAuthProvider> */}
     </PrimeReactProvider>
   </React.StrictMode>
 );

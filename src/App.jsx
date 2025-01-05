@@ -7,13 +7,6 @@ import { ToastContext, UserContext } from './context';
 import logoWhite from './assets/logo.png'; // Default white logo
 import logoBlack from './assets/logo_2.png'; // Black logo
 
-// Sections of Home page
-import Hero from './components/sections/Hero';
-import About from './components/sections/About';
-import SupportedUni from './components/sections/Supported_uni';
-import Contact from './components/sections/Contact';
-import Footer from './components/sections/Footer';
-
 // Main CSS file
 import './index.css';
 import { Avatar } from 'primereact/avatar';

@@ -3,6 +3,8 @@ import { Card } from "primereact/card";
 import { useContext, useEffect, useRef } from "react";
 import { DispatchUserData, ToastContext, UserContext } from "../context";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { Button } from "primereact/button";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
 export default function Login() {
   const userDispatch = useContext(DispatchUserData)
@@ -18,25 +20,22 @@ export default function Login() {
     }
   })
 
+  function loginWithGoogle() {
+    const provider = new GoogleAuthProvider()
+    const auth = getAuth(userData.firebaseApp)
+    signInWithPopup(auth,provider).then((result)=>{
+      console.log(result)
+    }).catch((error)=>{
+      console.log(error)
+    })
+  }
+
   return (
     <div>
       <Card style={{maxWidth:"300px",margin:"auto"}} title='Login' footer={(
         <div style={{backgroundColor:"white",padding:"16px"}}>
           <center>
-            <GoogleLogin
-              theme='filled_black'
-              shape='circle'
-              onSuccess={(credentialResponse)=>{
-                localStorage.setItem("credentials",credentialResponse.credential)
-                userDispatch({
-                  type:"credentials",
-                  payload:credentialResponse.credential
-                })
-              }}
-              onError={()=>{
-                toastRef.current.show({severity:"error",summary:"Login Error",detail:"Login with google failed."})
-              }}
-            />
+            <Button label="Login with Google" onClick={(e)=>{loginWithGoogle()}} />
           </center>
         </div>
       )}></Card>

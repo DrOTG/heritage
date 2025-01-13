@@ -7,15 +7,9 @@ import { ToastContext, UserContext } from './context';
 import logoWhite from './assets/logo.png'; // Default white logo
 import logoBlack from './assets/logo_2.png'; // Black logo
 
-// Sections of Home page
-import Hero from './components/sections/Hero';
-import About from './components/sections/About';
-import SupportedUni from './components/sections/Supported_uni';
-import Contact from './components/sections/Contact';
-import Footer from './components/sections/Footer';
-
 // Main CSS file
 import './index.css';
+import { Avatar } from 'primereact/avatar';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -130,8 +124,6 @@ function App() {
                   onClick={() => navigate('/')}
                 />
               }
-              end={<button className={`pi pi-user`} style={{ fontSize: '1.5rem', cursor: 'pointer' }} onClick={goToProfile}></button>}
-              
               className={`custom-menubar ${isScrolled ? 'scrolled' : ''}`}
               model={menuItems.map((item, index) => ({
                 ...item,
@@ -147,28 +139,17 @@ function App() {
                     {menuItem.label}
                   </a>
                 ),
-              }))
-              }
+              }))}
+              end={(
+                <>
+                {userData.user && (
+                  <Avatar image={userData.user.photoUrl} />
+                )}
+                </>
+              )}
             />
 
             <div className="main-content">
-              {location.pathname === '/' && (
-                <>
-                  <div className="css-1xzeski">
-                    <div className="main css-1ylu0bo">
-                      <div className="css-klr5dl">
-                        <Hero />
-                        <About />
-                        <SupportedUni />
-                        <Contact />
-                      </div>
-                    </div>
-                    <div className="css-1xzeski">
-                      <Footer />
-                    </div>
-                  </div>
-                </>
-              )}
               <Outlet />
             </div>
           </div>

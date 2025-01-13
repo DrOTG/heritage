@@ -15,6 +15,8 @@ import Login from './pages/Login.jsx';
 import Profile from './pages/Profile.jsx';
 import RequireLogin from './components/RequireLogin.jsx';
 import Subscribe from './pages/Subscribe.jsx';
+import AdminRoot from './pages/admin/AdminRoot.jsx';
+import AdminDashboard from './pages/admin/AdminDashboard.jsx';
 
 const router = createHashRouter([
   {
@@ -44,16 +46,26 @@ const router = createHashRouter([
       
     ],
   },
+  {
+    path:"/admin",
+    element: <AdminRoot />,
+    children: [
+      {
+        path:"",
+        element: <AdminDashboard />
+      }
+    ]
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <PrimeReactProvider>
-      <GoogleOAuthProvider clientId="1053050806046-t1ne3ogj3jf5qupfk9heaahia06mih75.apps.googleusercontent.com">
+      {/* <GoogleOAuthProvider clientId="568116722597-i8jbom46lr6j84cao5sc22miug17rijc.apps.googleusercontent.com"> */}
         <UserProvider>
           <RouterProvider router={router} />
         </UserProvider>
-      </GoogleOAuthProvider>
+      {/* </GoogleOAuthProvider> */}
     </PrimeReactProvider>
   </React.StrictMode>
 );

@@ -76,7 +76,7 @@
   bottom: -4px; /* Position below the text */
   width: 0;
   height: 5px;
-  background-color: red;
+  background-color: #CC5ABF;
   transition: width 0.3s ease-in-out;
 }
 
@@ -87,7 +87,7 @@
 
 /* Optional: Change text color on hover */
 .menu-item:hover {
-  color: red;
+  color: rgb(37, 227, 220);
 }
 
 /* Adjust logo size */

@@ -130,6 +130,8 @@ function App() {
                   onClick={() => navigate('/')}
                 />
               }
+              end={<button className={`pi pi-user`} style={{ fontSize: '1.5rem', cursor: 'pointer' }} onClick={goToProfile}></button>}
+              
               className={`custom-menubar ${isScrolled ? 'scrolled' : ''}`}
               model={menuItems.map((item, index) => ({
                 ...item,
@@ -145,7 +147,8 @@ function App() {
                     {menuItem.label}
                   </a>
                 ),
-              }))}
+              }))
+              }
             />
 
             <div className="main-content">

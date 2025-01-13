@@ -1,7 +1,7 @@
 import React from "react";
 import './Hero.css'; 
 import { motion } from "framer-motion"; // Import Framer Motion
-import heroImage from '../../assets/hero.jpg'; // Replace with your hero image
+import heroImage from '../../assets/image.png'; // Replace with your hero image
 
 
 const Hero = () => {

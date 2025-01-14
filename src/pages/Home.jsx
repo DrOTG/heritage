@@ -9,20 +9,16 @@ import Footer from '../components/sections/Footer';
 
 export default function Home() {
   return (
-    <div>
-      <div className="css-1xzeski">
-        <div className="main css-1ylu0bo">
-          <div className="css-klr5dl">
+    <div className="page-wrapper">
+        <div className="sections-container">
             <Hero />
             <About />
             <SupportedUni />
             <Contact />
           </div>
-        </div>
-        <div className="css-1xzeski">
+        <footer className="site-footer">
           <Footer />
-        </div>
+        </footer>
       </div>
-    </div>
   )
 }

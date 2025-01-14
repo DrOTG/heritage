@@ -38,7 +38,7 @@ const Footer = () => {
             <div className="container">
                 <div className="footer-content">
                     <div className="footer-section">
-                        <p className="copyright">© {year} Heritage Hub. All rights reserved.</p>
+                        <p className="copyright">© {year} Heritage.zm. All rights reserved.</p>
                     </div>
                     <div className="footer-section">
                         <ul className="profile-links">

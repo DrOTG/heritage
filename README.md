@@ -1,8 +1,3 @@
-# React + Vite
+# Heritage
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This website is designed to serve Zambian medical students by offering a curated selection of essential resources. The resources are provided via a Google Drive folder, with users gaining access upon successful payment. The website supports payments through Airtel Money and MTN Money via the LencoPay payment gateway. The backend is built with PHP, and it handles file storage, user authentication, and access management.

@@ -5,6 +5,7 @@ import { useReducer } from "react";
 import { Card } from "primereact/card";
 import { Sidebar } from "primereact/sidebar";
 import { Menu } from "primereact/menu";
+import { BreadCrumb } from "primereact/breadcrumb";
 
 const adminInitialState = {
   sideBarOpen:false,
@@ -57,7 +58,7 @@ export default function AdminRoot() {
             navigate("/")
           }
         }
-      ]} />
+      ]} className="w-full" />
     </Card>
   )
 
@@ -76,6 +77,14 @@ export default function AdminRoot() {
     <div className="grid m-0">
       <div className="col-fixed p-0 overflow-hidden hidden md:block transition-all transition-duration-500" style={{width:adminState.sideBarOpen?"300px":"0px"}}>{sideBarContent}</div>
       <div className="col">
+        <BreadCrumb model={[
+          {
+            label:"Home"
+          }
+        ]} home={{
+          label:"Dashboard",
+          icon:"pi pi-gauge"
+        }}/>
         <Outlet />
       </div>
     </div>

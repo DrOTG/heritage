@@ -20,7 +20,7 @@ function App() {
 
   const userData = useContext(UserContext);
   const toastRef = useContext(ToastContext);
-
+  
   const goToProfile = () => {
     if (!userData.user) {
       navigate('/login');

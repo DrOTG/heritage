@@ -7,6 +7,7 @@ import logoWhite from '../../assets/logo.png'; // Default white logo
 import logoBlack from '../../assets/logo_2.png'; // Black logo
 import { Avatar } from 'primereact/avatar';
 import './Navbar.css'; // CSS for Navbar
+import { Button } from 'primereact/button';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -128,7 +129,11 @@ export default function Navbar() {
           </a>
         ),
       }))}
-      end={userData.user && <Avatar image={userData.user.photoUrl} />}
+      end={(userData.user == null) ? (
+        <Button label='Login/Sign up' onClick={(e)=>{
+          navigate("/login");
+        }} />
+      ) : (<Avatar icon="pi pi-user" shape='circle' />)}
     />
   );
 }

@@ -1,10 +1,8 @@
-import { GoogleLogin } from "@react-oauth/google";
 import { Card } from "primereact/card";
 import { useContext, useEffect, useRef } from "react";
 import { DispatchUserData, ToastContext, UserContext } from "../context";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Button } from "primereact/button";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
 export default function Login() {
   const userDispatch = useContext(DispatchUserData)
@@ -20,23 +18,11 @@ export default function Login() {
     }
   })
 
-  function loginWithGoogle() {
-    const provider = new GoogleAuthProvider()
-    const auth = getAuth(userData.firebaseApp)
-    signInWithPopup(auth,provider).then((result)=>{
-      console.log(result)
-    }).catch((error)=>{
-      console.log(error)
-    })
-  }
-
   return (
-    <div>
-      <Card style={{maxWidth:"300px",margin:"auto"}} title='Login' footer={(
-        <div style={{backgroundColor:"white",padding:"16px"}}>
-          <center>
-            <Button label="Login with Google" onClick={(e)=>{loginWithGoogle()}} />
-          </center>
+    <div className="mt-6">
+      <Card style={{maxWidth:"300px",margin:"auto"}} title="Login" footer={(
+        <div style={{padding:"16px"}}>
+          <Button label="Login" icon="pi pi-lock" />
         </div>
       )}></Card>
     </div>

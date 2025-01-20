@@ -7,7 +7,6 @@ import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import { PrimeReactProvider } from 'primereact/api';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 import { UserProvider } from './context.jsx';
 import Home from './pages/Home.jsx'; // Import Home component for main page sections
 import Pricing from './pages/Pricing.jsx'; // Pricing component
@@ -61,11 +60,9 @@ const router = createHashRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <PrimeReactProvider>
-      {/* <GoogleOAuthProvider clientId="568116722597-i8jbom46lr6j84cao5sc22miug17rijc.apps.googleusercontent.com"> */}
         <UserProvider>
           <RouterProvider router={router} />
         </UserProvider>
-      {/* </GoogleOAuthProvider> */}
     </PrimeReactProvider>
   </React.StrictMode>
 );

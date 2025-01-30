@@ -1,51 +1,124 @@
-/* about.css */
-#about {
-  background-color: #fff; /* White background */
-  color: #333; /* Dark text for contrast */
+:root {
+  --primary-color: #25e3dc;
+  --secondary-color: #CC5ABF;
+  --text-color: #2d2d2d;
+  --bg-gradient: linear-gradient(45deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.about-section {
+  background: var(--bg-gradient);
+  padding: 6rem 2rem;
+  position: relative;
   overflow: hidden;
 }
 
 .about-content {
-  padding: 80px 20px;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
 }
 
-.about-content h3 {
-  font-size: 1.75rem;
-  font-weight: 600;
+.section-subtitle {
+  font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: #222; /* Slightly darker heading color */
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  padding-bottom: 0.5rem;
 }
 
-.about-content p {
+.section-subtitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.about-text {
   font-size: 1.1rem;
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-  color: #555; /* Slightly lighter text color */
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  max-width: 800px;
 }
 
 .benefits-list {
   list-style: none;
   padding: 0;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
 }
 
 .benefits-list li {
   font-size: 1.1rem;
-  line-height: 1.7;
-  margin-bottom: 0.75rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
   position: relative;
-  padding-left: 25px; /* Space for the checkmark */
-  color: #444;
+  padding-left: 2.5rem;
+  transition: transform 0.3s ease;
+  color: var(--text-color);
 }
 
 .benefits-list li::before {
-  content: "\2713"; /* Unicode checkmark */
+  content: "\2713";
   position: absolute;
-  left: 0;
+  left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #007bff; /* Blue checkmark (you can change this) */
-  font-weight: bold;
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.benefits-list li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.benefits-list li:hover::before {
+  color: var(--secondary-color);
+  transform: translateY(-50%) scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 4rem 1.5rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.75rem;
+  }
+  
+  .benefits-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    padding: 3rem 1rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .about-text {
+    font-size: 1rem;
+  }
+  
+  .benefits-list li {
+    padding: 1rem;
+    padding-left: 2rem;
+  }
 }

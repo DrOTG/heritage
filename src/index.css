@@ -1,54 +1,31 @@
-/* Fonts */
+/* index.css */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Raleway",  sans-serif;
-  --nav-font: "Inter",  sans-serif;
+  --dark-1: #0a0a0a;
+  --dark-2: #111111;
+  --dark-3: #1a1a1a;
+  --accent-teal: #25e3dc;
+  --accent-pink: #CC5ABF;
+  --text-primary: rgba(255,255,255,0.9);
+  --text-secondary: rgba(255,255,255,0.7);
+  --gradient: linear-gradient(45deg, var(--accent-teal), var(--accent-pink));
 }
 
-:root { 
-  --background-color: black; /* Background color for the entire website, including individual sections */
-}
-/* Smooth scroll */
-:root {
-  scroll-behavior: smooth;
+.dark-theme {
+  background-color: var(--dark-1);
+  color: var(--text-primary);
+  min-height: 100vh;
 }
 
-
-/*--------------------------------------------------------------
-General Styling
---------------------------------------------------------------*/
-
-.main-content { 
-  --breakpoint: "xs";
-  --grid-gutter: 16px;
-  --grid-columns: 6;
-  --grid-margin: 20px;
-  --max-width: calc(1912px - 80px);
-  --container-width: auto;
-  --bg-design-grid: rgba(127, 255, 255, 0.25);
-  flex-grow: 1; /* Allows main content to take up available space */
+section {
+  padding: 8rem 2rem;
 }
 
-.sections-container { 
-  z-index: 0;
-  position: relative;
-  background-color: #111111;
-  margin: 0 auto; /* Center the content */
-  max-width: var(--max-width);
-  margin-left: var(--grid-margin);
-  margin-right: var(--grid-margin);
-}
-.site-footer{
-  color: #111111;
-  background-color: #ffffff;
-  border-color: #e5e5e5;
-}
-
-/* Media query adjustments (unchanged, but now targeting .sections-container) */
-@media screen and (min-width: 900px) {
-  .sections-container {
-      --breakpoint: "lg";
-      --grid-columns: 12;
-      --grid-margin: 32px;
-  }
+h2 {
+  font-size: 2.5rem;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 3rem;
+  text-align: center;
 }

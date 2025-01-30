@@ -1,0 +1,138 @@
+/* Pricing.css */
+:root {
+  --dark-2: #111111;
+  --dark-3: #1a1a1a;
+  --accent-pink: #CC5ABF;
+  --text-primary: rgba(255,255,255,0.9);
+  --text-secondary: rgba(255,255,255,0.7);
+  --gradient: linear-gradient(45deg, #25e3dc, #CC5ABF);
+}
+
+.pricing-page {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.pricing-section {
+  padding: 4rem 0;
+}
+
+.pricing-section h1 {
+  font-size: 2.5rem;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 1rem;
+}
+
+.pricing-intro {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.pricing-card {
+  background: var(--dark-3);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.price {
+  font-size: 2.5rem;
+  margin: 1.5rem 0;
+  color: var(--accent-pink);
+  font-weight: 600;
+}
+
+.price span {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  text-align: left;
+}
+
+.features-list li {
+  padding: 0.8rem 0;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.features-list li::before {
+  content: "✓";
+  color: var(--accent-pink);
+  font-weight: 700;
+}
+
+.subscribe-button {
+  background: var(--gradient);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.subscribe-button:hover {
+  opacity: 0.9;
+  box-shadow: 0 5px 15px rgba(204,90,191,0.3);
+}
+
+/* Existing DriveFolders styles remain untouched */
+/* Add media queries below existing styles */
+
+@media (max-width: 768px) {
+  .pricing-page {
+    padding: 1rem;
+  }
+  
+  .pricing-section {
+    padding: 2rem 0;
+  }
+  
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .pricing-section h1 {
+    font-size: 2rem;
+  }
+  
+  .pricing-intro {
+    font-size: 1rem;
+  }
+  
+  .price {
+    font-size: 2rem;
+  }
+}

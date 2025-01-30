@@ -2,105 +2,57 @@ import { useState, useEffect, useContext } from 'react';
 import { Menubar } from 'primereact/menubar';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ToastContext, UserContext } from '../../context';
-
-import logoWhite from '../../assets/logo.png'; // Default white logo
-import logoBlack from '../../assets/logo_2.png'; // Black logo
+import logoWhite from '../../assets/logo.png';
+import logoBlack from '../../assets/logo_2.png';
 import { Avatar } from 'primereact/avatar';
-import './Navbar.css'; // CSS for Navbar
 import { Button } from 'primereact/button';
+import './Navbar.css';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [logo, setLogo] = useState(logoWhite);
   const location = useLocation();
   const navigate = useNavigate();
-
-  const userData = useContext(UserContext);
+  const { user, userError } = useContext(UserContext);
   const toastRef = useContext(ToastContext);
 
-  const goToProfile = () => {
-    if (!userData.user) {
-      navigate('/login');
-      if (userData.userError) {
-        toastRef.current.show({
-          severity: 'error',
-          summary: 'User Error',
-          detail: userData.userError,
-        });
-      }
+  const handleNavigation = (path, sectionId) => {
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => scrollToSection(sectionId), 100);
     } else {
-      navigate('/profile');
+      scrollToSection(sectionId);
     }
   };
 
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
+    section?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   useEffect(() => {
     const handleScroll = () => {
-      if (location.pathname === '/' && window.scrollY > 690) {
-        setIsScrolled(true);
-        setLogo(logoBlack);
-      } else if (location.pathname === '/') {
-        setIsScrolled(false);
-        setLogo(logoWhite);
-      }
+      const shouldScrolled = window.scrollY > 100;
+      setIsScrolled(shouldScrolled);
+      setLogo(shouldScrolled ? logoBlack : logoWhite);
     };
 
     if (location.pathname === '/') {
+      handleScroll();
       window.addEventListener('scroll', handleScroll);
     } else {
       setIsScrolled(true);
       setLogo(logoBlack);
     }
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [location.pathname]);
 
   const menuItems = [
-    {
-      label: 'Home',
-      command: () => {
-        if (location.pathname === '/') {
-          scrollToSection('home');
-        } else {
-          navigate('/');
-          setTimeout(() => scrollToSection('home'), 100);
-        }
-      },
-    },
-    {
-      label: 'About Us',
-      command: () => {
-        if (location.pathname === '/') {
-          scrollToSection('about');
-        } else {
-          navigate('/');
-          setTimeout(() => scrollToSection('about'), 100);
-        }
-      },
-    },
-    {
-      label: 'Pricing',
-      command: () => navigate('/pricing'),
-    },
-    {
-      label: 'Contact Us',
-      command: () => {
-        if (location.pathname === '/') {
-          scrollToSection('contact');
-        } else {
-          navigate('/');
-          setTimeout(() => scrollToSection('contact'), 100);
-        }
-      },
-    },
+    { label: 'Home', section: 'home' },
+    { label: 'About Us', section: 'about' },
+    { label: 'Pricing', path: '/pricing' },
+    { label: 'Contact Us', section: 'contact' },
   ];
 
   return (
@@ -115,25 +67,40 @@ export default function Navbar() {
       }
       className={`custom-menubar ${isScrolled ? 'scrolled' : ''}`}
       model={menuItems.map((item) => ({
-        ...item,
-        template: (menuItem) => (
+        label: item.label,
+        template: () => (
           <a
-            className="menu-item"
+            className={`menu-item ${
+              location.hash === `#${item.section}` ? 'active' : ''
+            }`}
             onClick={(e) => {
               e.preventDefault();
-              menuItem.command();
+              item.path
+                ? navigate(item.path)
+                : handleNavigation('/', item.section);
             }}
-            href="#"
+            href={item.path || `#${item.section}`}
           >
-            {menuItem.label}
+            {item.label}
           </a>
         ),
       }))}
-      end={(userData.user == null) ? (
-        <Button label='Login/Sign up' onClick={(e)=>{
-          navigate("/login");
-        }} />
-      ) : (<Avatar icon="pi pi-user" shape='circle' />)}
+      end={
+        user ? (
+          <Avatar
+            icon="pi pi-user"
+            shape="circle"
+            className={isScrolled ? 'scrolled-avatar' : ''}
+            onClick={() => navigate('/profile')}
+          />
+        ) : (
+          <Button
+            label="Login/Sign up"
+            className={isScrolled ? 'scrolled-button' : ''}
+            onClick={() => navigate('/login')}
+          />
+        )
+      }
     />
   );
 }

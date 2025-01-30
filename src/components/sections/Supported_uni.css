@@ -1,65 +1,92 @@
-/* supported universities */
+/* Supported_uni.css */
+.supported-uni {
+  background-color: var(--dark-2);
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
 
-  .clients {
-    background-color: black;
-    color: white;
-    justify-content: center; /* Align logos horizontally */
-  }
-  .row {
-    --bs-gutter-x: 1.5rem;
-    --bs-gutter-y: 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: calc(-1* var(--bs-gutter-y));
-    margin-right: calc(-.5* var(--bs-gutter-x));
-    margin-left: calc(-.5* var(--bs-gutter-x));
+.uni-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
-.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
-  --bs-gutter-x: 1.5rem;
-  --bs-gutter-y: 0;
-  width: 100%;
-  padding-right: calc(var(--bs-gutter-x)* .5);
-  padding-left: calc(var(--bs-gutter-x)* .5);
-  margin-right: auto;
-  margin-left: auto;
+
+.section-subtitle {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  text-align: center;
+  position: relative;
+  padding-bottom: 0.5rem;
 }
-.client-logos {
-  justify-content: center; /* Align logos horizontally */
-  gap: 30px; /* Add space between logos */
-  margin: 10px 0; /* Space above and below the logos */
+
+.section-subtitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background: var(--gradient);
 }
-  .clients .client-logo {
-    display: flex;
-    flex: 0 0 auto;
-    width: 16.66666667%;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+
+.logo-grid {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+}
+
+.logo-wrapper {
+  padding: 1rem;
+  background: var(--dark-3);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.uni-logo {
+  height: 60px;
+  object-fit: contain;
+  filter: grayscale(1) brightness(1.5);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.logo-wrapper:hover .uni-logo {
+  filter: grayscale(0) brightness(1);
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .supported-uni {
+    padding: 3rem 1rem;
   }
   
-  .clients .client-logo img {
-    max-width: 130px; /* Limit the width of the logos */
-    max-height: 90px; /* Ensure logos are not too tall */
-    transition: 0.3s;
-    opacity: 0.5;
-    filter: grayscale(100);
-    cursor: pointer;
+  .logo-grid {
+    gap: 2rem;
+    padding: 1rem 0;
   }
   
-  .clients .client-logo img:hover {
-    transform: scale(1.1); /* Slight zoom on hover */
-    filter: none;
-    opacity: 1;
+  .logo-wrapper {
+    padding: 0.75rem;
   }
   
-  @media (max-width: 640px) {
-    .client-logos {
-      margin: none; /* Space above and below the logos */
-    }
-    .clients .client-logo img {
-      max-width: 100px; /* Limit the width of the logos */
-      max-height: 70px; /* Ensure logos are not too tall */
-      padding: 20px;
-    }
+  .uni-logo {
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-subtitle {
+    font-size: 1.25rem;
   }
   
+  .uni-logo {
+    height: 40px;
+  }
+}

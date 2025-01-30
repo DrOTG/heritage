@@ -1,16 +1,17 @@
+// App.jsx
 import { Outlet } from 'react-router-dom';
-import Navbar from './components/sections/Navbar'; // Import the Navbar
+import Navbar from './components/sections/Navbar';
+import Footer from './components/sections/Footer';
 import './index.css';
 
 function App() {
   return (
-    <div className="site-wrapper">
-      <div className="site-container">
-        <Navbar />
-        <main className="main-content">
-          <Outlet />
-        </main>
-      </div>
+    <div className="dark-theme">
+      <Navbar />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
     </div>
   );
 }

@@ -1,58 +1,32 @@
 // Footer.jsx
-import React from "react";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebookF, faTwitter, faInstagram, faYoutube, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { motion } from 'framer-motion';
 import './Footer.css';
 
 const Footer = () => {
-    const year = new Date().getFullYear();
-
-    const profileLinks = [
-        { name: "Company", href: "/company" },
-        { name: "Careers", href: "/careers" },
-        { name: "Investor Relations", href: "/investors" },
-        { name: "Sustainability", href: "/sustainability" },
-        { name: "News", href: "/news" },
-        { name: "Contact Us", href: "/contact" }, //Added contact us
-        { name: "FAQ", href: "/faq" }, //Added FAQ
-    ];
-
-    const footerVariants = {
-        hidden: { opacity: 0, y: 50 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.8, ease: "easeInOut" },
-        },
-    };
-
-    const linkVariants = {
-        hover: { scale: 1.1, color: "#999" },
-        rest: { scale: 1, color: "#fff" },
-    };
-
-    return (
-        <motion.footer className="footer" variants={footerVariants} initial="hidden" animate="visible">
-            <div className="container">
-                <div className="footer-content">
-                    <div className="footer-section">
-                        <p className="copyright">© {year} Heritage.zm. All rights reserved.</p>
-                    </div>
-                    <div className="footer-section">
-                        <ul className="profile-links">
-                            {profileLinks.map((link) => (
-                                <motion.li key={link.name} whileHover="hover" variants={linkVariants}>
-                                    <Link to={link.href}>{link.name}</Link>
-                                </motion.li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </motion.footer>
-    );
+  return (
+    <motion.footer 
+      className="footer-section"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+    >
+      <div className="footer-content">
+        <div className="brand-block">
+          <h3 className="logo">Heritage.zm</h3>
+          <p>Empowering Zambia's Medical Future</p>
+        </div>
+        
+        <div className="footer-divider"></div>
+        
+        <div className="legal-block">
+          <p>© {new Date().getFullYear()} All rights reserved</p>
+          <div className="legal-links">
+            <a href="/terms">Terms</a>
+            <a href="/privacy">Privacy</a>
+          </div>
+        </div>
+      </div>
+    </motion.footer>
+  );
 };
 
 export default Footer;

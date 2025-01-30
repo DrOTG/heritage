@@ -6,19 +6,19 @@ import About from '../components/sections/About';
 import SupportedUni from '../components/sections/Supported_uni';
 import Contact from '../components/sections/Contact';
 import Footer from '../components/sections/Footer';
+import Layout from '../components/Layout';
 
 export default function Home() {
   return (
     <div className="page-wrapper">
-        <div className="sections-container">
-            <Hero />
-            <About />
-            <SupportedUni />
-            <Contact />
-          </div>
-        <footer className="site-footer">
-          <Footer />
-        </footer>
+      <div className="sections-container">
+      <Layout>
+        <Hero />
+        <About />
+        <SupportedUni />
+        <Contact />
+      </Layout>
       </div>
-  )
+    </div>
+  );
 }
